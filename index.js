@@ -82,7 +82,7 @@ type CustomDetailMethodType = {
 } & FileRequestCommonType;
 
 
-export const delay = (time: number):Promise<mixed> => {
+export const delay = (time: number): Promise<mixed> => {
   if (time <= 0) {
     return Promise.resolve({});
   }

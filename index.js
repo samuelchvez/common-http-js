@@ -82,7 +82,7 @@ type CustomDetailMethodType = {
 } & FileRequestCommonType;
 
 
-export const delay = (time: number):Promise<*> => {
+export const delay = (time: number):Promise<mixed> => {
   if (time <= 0) {
     return Promise.resolve({});
   }
@@ -99,7 +99,7 @@ export const toQuery = (params: URLParamsType): string => Object.keys(
 )
   .join('&');
 
-const primaryResponseHandler = (response: Response): Promise<*> => {
+const primaryResponseHandler = (response: Response): Promise<mixed> => {
   const { headers, status } = response || {};
   const statusCode = status;
   const contentTypes = headers.get('content-type').split(';').map(contentType => contentType);
@@ -189,7 +189,7 @@ const call = ({
   headers,
   // files,
   mock,
-}: CallType): Promise<*> => {
+}: CallType): Promise<mixed> => {
   if (typeof mock !== 'undefined') {
     const { response: { statusCode, body } } = mock;
     return delay(mock.delay).then(() => {
@@ -362,7 +362,7 @@ export class Resource {
 
   name: string;
 
-  custom: {[string]: any => Promise<*>};
+  custom: {[string]: any => Promise<mixed>};
 
   getAuthHeaders: (URLParamsType, ?string) => URLParamsType;
 
